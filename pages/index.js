@@ -1,9 +1,15 @@
+import NavBar from '../components/NavBar';
 function HomePage() {
-    return (
-        <main>
-            <h1>My Blog</h1>
-        </main>
-    )
+  return (
+    <>
+      <header>
+        <NavBar />
+      </header>
+      <main>
+        <h1>My Blog</h1>
+      </main>
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;
