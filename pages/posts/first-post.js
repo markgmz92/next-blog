@@ -1,14 +1,25 @@
 import Head from 'next/head';
+import { getPost } from '../../lib/posts';
 
-function FirstPostPage() {
+export async function getStaticProps() {
+  const post = await getPost('first-post');
+  return {
+    props: {
+      post
+    }
+  };
+}
+
+function FirstPostPage({ post }) {
+  console.log('[FirstPostPage render:', post);
   return (
     <>
       <Head>
-        <title>First Post - My Blog</title>
+        <title>{post.title}</title>
       </Head>
       <main>
-        <h1>First Post</h1>
-        <p>This is my first ever blog post</p>
+        <h1>{post.title}</h1>
+        <article dangerouslySetInnerHTML={{ __html: post.body }} />
       </main>
     </>
   );
